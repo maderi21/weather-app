@@ -13,6 +13,16 @@
 
 <script setup>
 import { ref } from "vue";
+import axios from "axios";
 
 const searchQuery = ref("");
+const queryTimeout = ref(null);
+
+const getSearchResults = () => {
+  queryTimeout.value = setTimeout(() => {
+		if (queryTimeout.value !== '') {
+			const result = await axios.get(`https://api.mapbox.com/search/geocode/v6/forward?q={search_text}`);
+	}
+},300);
+};
 </script>
