@@ -1,5 +1,17 @@
 <template>
-  <div></div>
+  <div class="flex flex-col flex-1 items-center">
+    <!-- banner -->
+    <div
+      v-if="route.query.preview"
+      class="text-white p-4 bg-weather-secondary w-full text-center"
+    >
+      <p>
+        You are currently previewing this city, click the "+" icon to start
+        tracking this city.
+      </p>
+    </div>
+    <!-- weather overview -->
+  </div>
 </template>
 
 <script setup>
@@ -20,11 +32,15 @@ const getWeatherData = async () => {
     weatherData.data.currentTime =
       utc + 1000 * weatherData.data.timezone.offset;
 
-    // call hourly weather offset
+    // cal hourly weather offset
     weatherData.data.hourly.array.forEach((hour) => {
       const utc = hour.dt * 1000 + localOffset;
       hour.currentTime = utc + 1000 * weatherData.data.timezone_offset;
     });
+
+    return weatherData;
   } catch (err) {}
 };
+
+const weatherData = await getWeatherData();
 </script>
