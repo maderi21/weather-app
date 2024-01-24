@@ -27,6 +27,28 @@
           })
         }}
       </p>
+      <p class="text-8xl mb-8">
+        {{ Math.round(weatherData.current.temp) }}&deg
+      </p>
+
+      <p>Fleels Like {{ Math.round(weatherData.current.feels_like) }}&deg;</p>
+      <p class="capitalize">
+        Fleels Like {{ weatherData.current.weather[0].description }}&deg;
+      </p>
+      <img
+        class="w-[150px] h-auto"
+        :src="`http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png`"
+        alt=""
+      />
+    </div>
+    <hr class="border-white border-opacity-10 border w-full" />
+
+    <!-- Hourly weather -->
+    <div class="max-w-screen-md w-full py-12">
+      <div class="mx-8 text-white">
+        <h2 class="mb-4">Hourly Weather</h2>
+        <div class="flex gap-10 overflow-x-scroll"></div>
+      </div>
     </div>
   </div>
 </template>
