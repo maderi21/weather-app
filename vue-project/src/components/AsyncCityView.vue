@@ -11,6 +11,23 @@
       </p>
     </div>
     <!-- weather overview -->
+    <div class="flex flex-col item-center text-white py-12">
+      <h1 class="text-4xl mb-2">{{ route.params.city }}</h1>
+      <p class="text-sm mb-12">
+        {{
+          new Date(weatherData.currentTime).toLocaleDateString("en-us", {
+            weekday: "short",
+            day: "2-digit",
+            month: "long",
+          })
+        }}
+        {{
+          new Date(weatherData.currentTime).toLocaleTimeString("en-us", {
+            timeStyle: "short",
+          })
+        }}
+      </p>
+    </div>
   </div>
 </template>
 
